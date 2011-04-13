@@ -6,13 +6,14 @@ Gem::Specification.new do |s|
   s.name        = "Valex"
   s.version     = Valex::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
+  s.authors     = ["Paris.rb team"]
   s.email       = ["TODO: Write your email address"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "https://github.com/parisrb/valex"
+  s.summary     = "Export validations from ORMs to javascript to avoid code duplication"
+  s.description = "Export validations from ORMs to javascript to avoid code duplication"
 
   s.rubyforge_project = "valex"
+  s.add_runtime_dependency "json"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
