@@ -1,1 +1,1 @@
-Export validations from ORMs to javascript to avoid code duplicating.
+Export validations from ORMs to javascript to avoid code duplication
