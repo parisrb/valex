@@ -53,7 +53,7 @@ module Valex
       if min
         result[:min] = min
       end
-      if min
+      if max
         result[:max] = max
       end
       result.to_json(*a)
