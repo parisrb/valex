@@ -5,12 +5,9 @@ module Sequel
 
   class Model
 
-    # contain the list of loaded models
-    VALEX_MODELS_LIST = []
-
     def self.inherited k
       super
-      VALEX_MODELS_LIST << k
+      Valex::Adapters::SequelAdapter::VALEX_MODELS_LIST << k
     end
 
   end
@@ -38,9 +35,12 @@ module Valex
     # Adapter for Sequel
     class SequelAdapter < Adapter
 
+    # contain the list of loaded models
+    VALEX_MODELS_LIST = []
+
       def process models_files_pattern
         Dir.glob(models_files_pattern) {|file| require file}
-        Sequel::Model::VALEX_MODELS_LIST.collect do |model_class|
+          VALEX_MODELS_LIST.collect do |model_class|
           model = Model.new(model_class.name)
           instance = model_class.new
           instance.validate
