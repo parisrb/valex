@@ -6,7 +6,11 @@ class TestSequel < Test::Unit::TestCase
     Valex::Valex.new :sequel
   end
 
-  #  valex.process File.dirname(__FILE__) + 'models/sequel'
-
+  def test_validation
+    valex = Valex::Valex.new :sequel
+    model_path = File.expand_path(File.join(File.dirname(__FILE__), 'models', 'sequel.rb'))
+    assert_not_nil models = valex.process(model_path)
+    assert_equal 1, models.length
+  end
 
 end

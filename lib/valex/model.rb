@@ -1,7 +1,9 @@
 # Represents a model, contains the associated validations.
 class Valex::Model
 
-  attr_reader :name, :validations
+  attr_reader :name
+
+  attr_accessor :validations
 
   def initialize name
     @name = name

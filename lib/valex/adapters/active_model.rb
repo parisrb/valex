@@ -1,15 +1,8 @@
-module Valex
+# Adapter for ActiveRecord
+class Valex::Adapters::ActiveModelAdapter < Adapter
 
-  module Adapters
-
-    # Adapter for ActiveRecord
-    class ActiveModelAdapter < Adapter
-
-      def process models_files_pattern
-        []
-      end
-
-    end
-
+  def process models_files_pattern
+    []
   end
+
 end

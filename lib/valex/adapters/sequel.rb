@@ -1,53 +1,59 @@
 require "sequel"
 Sequel::Model.plugin :validation_helpers
 
-module Sequel
+class Sequel::Model
 
-  class Model
-
-    def self.inherited k
-      super
-      Valex::Adapters::SequelAdapter::VALEX_MODELS_LIST << k
-    end
-
+  def self.inherited k
+    super
+    Valex::Adapters::SequelAdapter.add_model k
   end
 
 end
 
-module Sequel
+module Sequel::Plugins::ValidationHelpers::InstanceMethods
 
-  module Plugins
+  def validates_presence(atts, opts={})
+    validation = Valex::Validations::Presence.new
+    validation.field_name = atts.to_s
+    Valex::Adapters::SequelAdapter.add_validation validation
+  end
 
-    module ValidationHelpers
+  def validates_exact_length(exact, atts, opts={})
+  end
 
-      # here add the hacks
-      
-    end
-
+  def validates_format(with, atts, opts={})
   end
 
 end
 
-module Valex
+module Valex::Adapters
+# Adapter for Sequel
+  class SequelAdapter < Adapter
 
-  module Adapters
+    # the loaded models
+    @@valex_models = []
 
-    # Adapter for Sequel
-    class SequelAdapter < Adapter
+    def self.add_model model
+      @@valex_models << model
+    end
 
-    # contain the list of loaded models
-    VALEX_MODELS_LIST = []
+    # validation for the model currently being processed
+    @@current_model_validations = []
 
-      def process models_files_pattern
-        Dir.glob(models_files_pattern) {|file| require file}
-          VALEX_MODELS_LIST.collect do |model_class|
-          model = Model.new(model_class.name)
-          instance = model_class.new
-          instance.validate
-          model
-        end
+    def self.add_validation validation
+      @@current_model_validations << validation
+    end
+
+    def process models_files_pattern
+      Dir.glob(models_files_pattern) { |file| require file }
+      @@valex_models.collect do |model_class|
+        @@current_model_validations = []
+        model = Model.new(model_class.name)
+        instance = model_class.new
+        instance.validate
+        model.validations = @@current_model_validations
+        model
       end
-
     end
 
   end
