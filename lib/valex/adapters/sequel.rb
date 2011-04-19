@@ -12,10 +12,9 @@ end
 
 module Sequel::Plugins::ValidationHelpers::InstanceMethods
 
-  def validates_presence(atts, opts={})
+  def validates_presence(attr_name, opts={})
     validation = Valex::Validations::Presence.new
-    validation.field_name = atts.to_s
-    Valex::Adapters::SequelAdapter.add_validation validation
+    Valex::Adapters::SequelAdapter.add_validation attr_name, validation
   end
 
   def validates_exact_length(exact, atts, opts={})
@@ -38,20 +37,30 @@ module Valex::Adapters
     end
 
     # validation for the model currently being processed
-    @@current_model_validations = []
+    @@current_model_validations = {}
+    @@current_model_attributes = {}
 
-    def self.add_validation validation
-      @@current_model_validations << validation
+    def self.add_validation attr_name, validation
+      @@current_model_validations[attr_name] ||= []
+      @@current_model_validations[attr_name].push validation
+    end
+
+    def self.add_attribute attr_name, type
+      @@current_model_attributes[attr_name] = type
     end
 
     def process models_files_pattern
       Dir.glob(models_files_pattern) { |file| require file }
       @@valex_models.collect do |model_class|
-        @@current_model_validations = []
-        model = Model.new(model_class.name)
+        @@current_model_validations = {}
+        @@current_model_attributes = {}
+        model = Valex::Model.new(model_class.name)
         instance = model_class.new
         instance.validate
         model.validations = @@current_model_validations
+        @@current_model_attributes.each do |attr_name, type|
+          model.attributes << Valex::Attribute.new(attr_name, type)
+        end
         model
       end
     end

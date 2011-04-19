@@ -2,14 +2,16 @@
 module Valex::Validations
   class Presence < Validation
 
-    attr_reader :field_name
+    attr_reader :message
 
-    def initialize field_name
-      @field_name = field_name
+    def initialize options={}
+      @message = options[:message] if options[:message]
     end
 
     def to_json(*a)
-      {:field_name => field_name}.to_json(*a)
+      result = {:presence => {}}
+      result[:presence][:message] = message if message
+      result.to_json(*a)
     end
   end
 
