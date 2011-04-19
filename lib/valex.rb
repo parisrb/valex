@@ -61,8 +61,12 @@ module Valex
 
   end
 
-  # Transform a set of models from an ORM to Valex models.
-  class Adapter
+  module Adapters
+
+    # Transform a set of models from an ORM to Valex models.
+    class Adapter
+
+    end
 
   end
 
