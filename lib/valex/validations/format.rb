@@ -1,5 +1,5 @@
 # Validation for a regexp format
-module Vales::Validations
+module Valex::Validations
   class Format < Validation
     attr_reader :format
 

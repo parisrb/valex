@@ -20,5 +20,6 @@ end
 
 require "valex/valex"
 require "valex/model"
+require "valex/validations/format"
 require "valex/validations/length"
 require "valex/validations/presence"

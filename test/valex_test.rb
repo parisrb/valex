@@ -1,7 +1,7 @@
 require_relative 'helper_test'
 
 class TestValex < Test::Unit::TestCase
- 
+
   def test_adapter
     assert_not_nil Valex
     assert_not_nil Valex::Adapters::Adapter
@@ -13,6 +13,10 @@ class TestValex < Test::Unit::TestCase
 
   def test_validations
     assert_not_nil Valex::Validations
+  end
+
+  def test_validation_format
+    assert_not_nil Valex::Validations::Format
   end
 
   def test_validation_length
