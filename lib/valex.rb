@@ -72,11 +72,11 @@ module Valex
     # initialize with an adapter name or an adapter class
     def initialize(adapter)
       if adapter == :active_model
-        require "valex/adapters/active_model"
-        @adapter = ADAPTERS::ActiveModel.new
+        require_relative "valex/adapters/active_model"
+        @adapter = Adapters::ActiveModelAdapter.new
       elsif adapter == :sequel
-        require "valex/adapters/sequel"
-        @adapter = ADAPTERS::Sequel.new
+        require_relative "valex/adapters/sequel"
+        @adapter = Adapters::SequelAdapter.new
       else
         @adapter = adapter
       end

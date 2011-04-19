@@ -1,5 +1,3 @@
-require '../../valex'
-
 module Valex
 
   module Adapters
