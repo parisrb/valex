@@ -1,9 +1,5 @@
-path = File.expand_path(File.dirname(__FILE__))
-$:.unshift File.join path, "..", "lib"
+require_relative 'helper_test'
 
-require "valex"
-require "test/unit"
- 
 class TestValex < Test::Unit::TestCase
  
   def test_adapter
