@@ -8,7 +8,7 @@ class TestValex < Test::Unit::TestCase
  
   def test_adapter
     assert_not_nil Valex
-    assert_not_nil Valex::Adapter
+    assert_not_nil Valex::Adapters::Adapter
   end
 
   def test_model
