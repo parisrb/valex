@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "valex"
   s.add_runtime_dependency "json"
-  s.add_development_dependency "sequel", '> 3.21.0'
-  s.add_development_dependency "sqlite3", '> 3.21.0'
+  s.add_development_dependency "sequel", '>= 3.21.0'
+  s.add_development_dependency "sqlite3", '>= 1.3.3'
   s.add_development_dependency "rspec"
 
   s.files         = `git ls-files`.split("\n")
