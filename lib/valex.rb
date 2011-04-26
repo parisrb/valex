@@ -1,10 +1,12 @@
-require 'json'
-
 module Valex
   # Represents a validation.
   module Validations
     class Validation
+      attr_reader :options
 
+      def initialize(options={})
+        @options = options
+      end
     end
   end
 

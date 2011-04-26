@@ -5,7 +5,8 @@ module Valex::Validations
     attr_reader :equal_to, :even, :greater_than, :greater_than_or_equal_to,
       :less_than, :less_than_or_equal_to, :odd, :only_integer, :message
 
-    def initialize
+    def initialize options={}
+      super
       # Specify a value the field must be exactly.
       @equal_to = options[:equal_to] if options[:equal_to]
       # Set that the value must be even.
@@ -22,22 +23,7 @@ module Valex::Validations
       @odd = options[:odd] if options[:odd]
       # Set whether the value has to be an integer.
       @only_integer = options[:only_integer] if options[:only_integer]
-      # Supply a custom error message.
-      @message = options[:message] if options[:message]
     end
 
-    def to_json(*a)
-      result = {}
-      result[:equal_to] = equal_to if equal_to
-      result[:even] = even if even
-      result[:greater_than] = greater_than if greater_than
-      result[:greater_than_or_equal_to] = greater_than_or_equal_to if greater_than_or_equal_to
-      result[:less_than] = less_than if less_than
-      result[:less_than_or_equal_to] = less_than_or_equal_to if less_than_or_equal_to
-      result[:odd] = odd if odd
-      result[:only_integer] = only_integer if only_integer
-
-      result.to_json(*a)
-    end
   end
 end

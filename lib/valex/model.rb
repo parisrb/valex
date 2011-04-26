@@ -15,4 +15,8 @@ class Valex::Model
     {:name => name, :attributes => attributes, :validations => validations}.to_json(*a)
   end
 
+  def export(exporter=:json)
+    
+  end
+
 end

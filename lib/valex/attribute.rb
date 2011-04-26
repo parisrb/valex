@@ -1,15 +1,13 @@
 module Valex
   class Attribute
 
-    attr_reader :name, :type
+    attr_reader :name, :type, :validations
 
     def initialize attr_name, type
       @name = attr_name
       @type = type
+      @validations = []
     end
 
-    def to_json(*a)
-      {:name => name, :type => type}.to_json(*a)
-    end
   end
 end

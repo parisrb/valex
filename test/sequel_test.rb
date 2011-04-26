@@ -6,7 +6,7 @@ class TestSequel < Test::Unit::TestCase
     Valex::Valex.new :sequel
   end
 
-  def test_validation
+  def test_validation_process
     valex = Valex::Valex.new :sequel
     model_path = File.expand_path(File.join(File.dirname(__FILE__), 'models', 'sequel.rb'))
     assert_not_nil models = valex.process(model_path)
@@ -14,4 +14,10 @@ class TestSequel < Test::Unit::TestCase
     assert_equal "User", models.first.name
   end
 
+  def test_validation_export
+    valex = Valex::Valex.new :sequel
+    model_path = File.expand_path(File.join(File.dirname(__FILE__), 'models', 'sequel.rb'))
+    assert_not_nil models = valex.process(model_path)
+    assert_not_nil models = valex.export
+  end
 end
