@@ -4,19 +4,19 @@ module Valex
   class Valex
 
     # initialize with an adapter name or an adapter class
-    def initialize(adapter, exporter=:json)
+    def initialize(adapter, parameters = {}, exporter=:json)
       if adapter == :active_model
         require_relative "adapters/active_model"
-        @adapter = Adapters::ActiveModelAdapter.new
+        @adapter = Adapters::ActiveModelAdapter.new parameters
       elsif adapter == :sequel
         require_relative "adapters/sequel"
-        @adapter = Adapters::SequelAdapter.new
+        @adapter = Adapters::SequelAdapter.new parameters
       else
         @adapter = adapter
       end
       if exporter == :json
         require_relative "exporters/json"
-        @exporter = Exporters::JSON.new
+        @exporter = Exporters::JSON.new parameters
       else
         @exporter = exporter
       end

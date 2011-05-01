@@ -1,9 +1,7 @@
 # Represents a model, contains the associated validations.
 class Valex::Model
 
-  attr_reader :name
-
-  attr_accessor :attributes, :validations
+  attr_accessor :attributes, :validations, :name
 
   def initialize name
     @name = name
@@ -16,7 +14,7 @@ class Valex::Model
   end
 
   def export(exporter=:json)
-    
+
   end
 
 end
