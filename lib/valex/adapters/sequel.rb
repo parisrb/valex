@@ -25,7 +25,7 @@ module Sequel::Plugins::ValidationHelpers::InstanceMethods
   end
 
   def validates_format(with, atts, opts={})
-    add_validations attr_name, Valex::Validations::Presence.new(attr_name)
+    add_validations atts, Valex::Validations::Format.new({:format => with})
   end
 
   private
