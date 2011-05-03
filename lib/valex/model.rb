@@ -5,7 +5,7 @@ class Valex::Model
 
   def initialize name
     @name = name
-    @attributes = []
+    @attributes = {}
     @validations = []
   end
 

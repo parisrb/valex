@@ -2,7 +2,7 @@
 module Valex::Validations
   class Length < Validation
 
-    attr_reader :allow_blank, :in_range, :minimum, :maximum, :within
+    attr_reader :allow_blank, :minimum, :maximum
   
     def initialize options={}
       super
