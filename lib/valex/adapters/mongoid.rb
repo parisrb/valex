@@ -5,7 +5,7 @@ module Valex::Adapters
   class MongoidAdapter < Adapter
 
     def process models_files_pattern
-      Dir.glob(models_files_pattern) { |file| require file }
+      require_files(models_files_pattern)
     end
   end
 end

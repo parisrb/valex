@@ -86,7 +86,7 @@ module Valex::Adapters
     def process models_files_pattern
       @@valex_models = []
 
-      Dir.glob(models_files_pattern) { |file| require file }
+      require_files(models_files_pattern)
 
       # First read the schema info to create the attributes
       models = {}

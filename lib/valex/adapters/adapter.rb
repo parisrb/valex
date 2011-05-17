@@ -9,6 +9,10 @@ module Valex::Adapters
       @parameters = parameters
     end
 
+    def require_files(models_files_pattern)
+      Dir.glob(models_files_pattern) { |file| require file }
+    end
+
   end
 
 end
