@@ -13,6 +13,13 @@ module Valex::Adapters
       Dir.glob(models_files_pattern) { |file| require file }
     end
 
+    # the loaded models
+    @@valex_models = []
+
+    def self.add_model model
+      @@valex_models << model
+    end
+
   end
 
 end

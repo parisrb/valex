@@ -69,13 +69,6 @@ module Valex::Adapters
 
     end
 
-    # the loaded models
-    @@valex_models = []
-
-    def self.add_model model
-      @@valex_models << model
-    end
-
     # validation for the model currently being processed
     @@current_model_validations = {}
 
