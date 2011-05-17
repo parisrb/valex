@@ -3,14 +3,14 @@ require 'sequel'
 
 class TestSequel < Test::Unit::TestCase
 
-  DB = Sequel.sqlite
+  ::SequelTestDB = Sequel.sqlite
 
   def test_know_sequel_adapter
-    Valex::Valex.new :sequel, {'db' => DB}
+    Valex::Valex.new :sequel, {'db' => ::SequelTestDB}
   end
 
   def test_validation_process
-    valex = Valex::Valex.new :sequel, {'db' => DB}
+    valex = Valex::Valex.new :sequel, {'db' => ::SequelTestDB}
     model_path = File.expand_path(File.join(File.dirname(__FILE__), 'models', 'sequel.rb'))
     assert_not_nil models = valex.process(model_path)
     assert_equal 2, models.length

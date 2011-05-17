@@ -8,3 +8,4 @@ require "valex/validations/length"
 require "valex/validations/presence"
 require "valex/validations/unique"
 require "valex/validations/numericality"
+require 'valex/rake_integration'

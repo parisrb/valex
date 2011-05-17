@@ -1,0 +1,15 @@
+path = File.expand_path(File.dirname(__FILE__))
+$:.unshift File.join path, "..", "lib"
+require_relative '../lib/valex'
+
+require 'sequel'
+
+SequelTestDB = Sequel.sqlite
+
+model_path = File.expand_path(File.join(File.dirname(__FILE__), 'models', 'sequel.rb'))
+
+Valex::RakeTasks.install_tasks :adapter => :sequel,
+  :input => model_path,
+  :params => {'db' => SequelTestDB}
+
+task :default => ['valex:export']
