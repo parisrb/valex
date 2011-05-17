@@ -22,6 +22,7 @@ class Luser < Sequel::Model(:luzers)
 
   def validate
     validates_presence :name
+    validates_unique :name
   end
 
 end

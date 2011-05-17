@@ -21,11 +21,21 @@ module Sequel::Plugins::ValidationHelpers::InstanceMethods
   end
 
   def validates_exact_length(exact, atts, opts={})
-    add_validations atts, Valex::Validations::Length.new({:maximum => exact, :minimum => exact})
+    atts.each do |att|
+      add_validations att, Valex::Validations::Length.new({:maximum => exact, :minimum => exact})
+    end
   end
 
   def validates_format(with, atts, opts={})
-    add_validations atts, Valex::Validations::Format.new({:format => with})
+    atts.each do |att|
+      add_validations att, Valex::Validations::Format.new({:format => with})
+    end
+  end
+
+  def validates_unique(*atts)
+    atts.each do |att|
+      add_validations att, Valex::Validations::Unique.new
+    end
   end
 
   private
