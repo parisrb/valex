@@ -16,22 +16,26 @@ end
 
 module Sequel::Plugins::ValidationHelpers::InstanceMethods
 
+  remove_method :validates_presence
   def validates_presence(attr_name, opts={})
     add_validations attr_name, Valex::Validations::Presence.new
   end
 
+  remove_method :validates_exact_length
   def validates_exact_length(exact, atts, opts={})
     atts.each do |att|
       add_validations att, Valex::Validations::Length.new({:maximum => exact, :minimum => exact})
     end
   end
 
+  remove_method :validates_format
   def validates_format(with, atts, opts={})
     atts.each do |att|
       add_validations att, Valex::Validations::Format.new({:format => with})
     end
   end
 
+  remove_method :validates_unique
   def validates_unique(*atts)
     atts.each do |att|
       add_validations att, Valex::Validations::Unique.new

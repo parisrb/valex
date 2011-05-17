@@ -7,7 +7,7 @@ module Valex::Exporters
     def process models
       models.collect do |model|
         validations = model.validations.collect do |validation|
-          {:name => validation.to_s.downcase}.update(validation.options)
+          {:type => validation.class.name.split('::').pop.downcase}.update(validation.options)
         end
         # attributes = model.attributes.collect do |attribute|
         #   {:name => attribute.name, :type => attribute.type}

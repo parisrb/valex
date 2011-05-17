@@ -23,8 +23,8 @@ class TestValex < Test::Unit::TestCase
     assert_not_nil Valex::Validations::Length
   end
 
-  def test_validation_numerically
-    assert_not_nil Valex::Validations::Numerically
+  def test_validation_numericality
+    assert_not_nil Valex::Validations::Numericality
   end
 
   def test_validation_presence
