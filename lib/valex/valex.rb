@@ -18,8 +18,8 @@ module Valex
         require_relative "exporters/json"
         @exporter = Exporters::JSON.new parameters
       elsif exporter == :jquery
-          require_relative "exporters/jquery"
-          @exporter = Exporters::JQuery.new parameters
+        require_relative "exporters/jquery"
+        @exporter = Exporters::JQuery.new parameters
       else
         @exporter = exporter
       end
