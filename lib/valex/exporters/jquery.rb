@@ -11,6 +11,8 @@ module Valex::Exporters
         model.attributes.each_value do |attribute|
           attribute.validations.each do |validation|
             case validation
+              when Valex::Validations::Presence
+                model_result[:required] = true
               when Valex::Validations::Unique
                 # not available
               when Valex::Validations::Length
