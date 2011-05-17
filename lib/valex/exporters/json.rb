@@ -1,7 +1,8 @@
 require 'json'
 
 module Valex::Exporters
-   class JSON
+
+  class JSON
 
     def process models
       models.collect do |model|
@@ -16,4 +17,5 @@ module Valex::Exporters
     end
 
   end
+
 end
