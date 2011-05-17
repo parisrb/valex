@@ -6,8 +6,9 @@ class Sequel::Model
 
   def self.inherited k
     super
+    # model classes without names are created when specifying a table name when defining a model
+    # so we ignore them
     if k.name
-      # model classes without names are created when specifying a dataset when defining a model
       Valex::Adapters::SequelAdapter.add_model k
     end
   end
