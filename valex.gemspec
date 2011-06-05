@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/parisrb/valex"
   s.summary     = "Export ORMs validations to js"
   s.description = "Parse validations from several ruby ORMs and export them in javascript to avoid code duplication between client and server"
+  s.license = 'MIT'
 
   s.rubyforge_project = "valex"
   s.add_runtime_dependency "json"
