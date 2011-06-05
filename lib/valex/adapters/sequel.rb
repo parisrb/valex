@@ -114,7 +114,9 @@ module Valex::Adapters
         instance.validate
         @@current_model_validations.each_pair do |attr_name, validations|
           model.validations.concat(validations)
-          model.attributes[attr_name].validations.concat(validations)
+          attribute = model.attributes[attr_name]
+          attribute.validations.concat(validations)
+          validations.each {|v| v.attribute = attribute }
         end
         model
       end
