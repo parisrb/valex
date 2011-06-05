@@ -1,6 +1,6 @@
-require_relative 'helper_test'
- 
-class TestValex < Test::Unit::TestCase
+require_relative 'test_helper'
+
+class Valex::Test::TestValex < Test::Unit::TestCase
 
   def test_adapter
     assert_not_nil Valex

@@ -1,7 +1,7 @@
-require_relative 'helper_test'
-require_relative '../lib/valex/exporters/jquery'
+require_relative '../test_helper'
+require_relative '../../lib/valex/exporters/jquery'
 
-class JQueryTest < Test::Unit::TestCase
+class Valex::Test::JQueryTest < Test::Unit::TestCase
 
   def test_select_export
     models = []

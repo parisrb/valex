@@ -1,4 +1,4 @@
-require_relative 'helper_test'
+require_relative '../test_helper'
 require 'active_model'
 
 module Valex::Test::ActiveModel

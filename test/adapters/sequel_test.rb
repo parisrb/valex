@@ -1,4 +1,4 @@
-require_relative 'helper_test'
+require_relative '../test_helper'
 require 'sequel'
 
 module Valex::Test::Sequel

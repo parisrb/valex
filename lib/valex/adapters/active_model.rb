@@ -12,6 +12,7 @@ module ActiveModel #:nodoc:
 end
 
 module Valex::Adapters
+
   # Adapter for ActiveRecord
   class ActiveModelAdapter < Adapter
 
@@ -20,10 +21,10 @@ module Valex::Adapters
 
       require_files(models_files_pattern)
 
-      @@valex_models.map { |model_class|
+      @@valex_models.map do |model_class|
         Valex::Model.new model_class.to_s
-      }
+      end
     end
-
   end
+  
 end
