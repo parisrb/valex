@@ -1,4 +1,4 @@
-require "mongoid"
+require 'mongoid'
 
 module Valex::Adapters
 # Adapter for Mongoid

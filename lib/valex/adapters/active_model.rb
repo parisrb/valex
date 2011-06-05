@@ -1,5 +1,6 @@
 # Adapter for ActiveRecord
 require 'active_model'
+
 module ActiveModel::Validations
   def self.included base
     super.tap { Valex::Adapters::ActiveModelAdapter.add_model(base) }

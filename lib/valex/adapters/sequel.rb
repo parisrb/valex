@@ -1,4 +1,4 @@
-require "sequel"
+require 'sequel'
 
 Sequel::Model.plugin :validation_helpers
 

@@ -1,7 +1,11 @@
-class User
-  include ActiveModel::Validations
-  
-  validates_presence_of :name
+module Valex::Test::ActiveModel
 
-  attr_accessor :id, :name
+  class User
+    include ActiveModel::Validations
+
+    validates_presence_of :name
+
+    attr_accessor :id, :name
+  end
+
 end
