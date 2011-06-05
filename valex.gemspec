@@ -7,10 +7,10 @@ Gem::Specification.new do |s|
   s.version     = Valex::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Paris.rb team"]
-  s.email       = ["TODO: Write your email address"]
+  s.email       = "paris.code.rb@librelist.com"
   s.homepage    = "https://github.com/parisrb/valex"
-  s.summary     = "Export validations from ORMs to javascript to avoid code duplication"
-  s.description = "Export validations from ORMs to javascript to avoid code duplication"
+  s.summary     = "Export ORMs validations to js"
+  s.description = "Parse validations from several ruby ORMs and export them in javascript to avoid code duplication between client and server"
 
   s.rubyforge_project = "valex"
   s.add_runtime_dependency "json"
