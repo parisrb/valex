@@ -1,9 +1,12 @@
-module Valex
+module Valex #:nodoc:
 
   # The main entry point
   class Valex
 
-    # initialize with an adapter name or an adapter class
+    # Initialize
+    # adapter:: the adapter name or class
+    # parameters:: paramaters for the adapter and exporter
+    # exporter:: the exporter name or class, default is :json
     def initialize(adapter, parameters = {}, exporter=:json)
       if adapter == :active_model
         require_relative 'adapters/active_model'
@@ -25,10 +28,12 @@ module Valex
       end
     end
 
-    def process models_files_pattern
+    # Process the models indicated by a file pattern
+    def process(models_files_pattern)
       @models = @adapter.process models_files_pattern
     end
 
+    # Export the models
     def export
       @exporter.process @models
     end

@@ -1,4 +1,4 @@
-# Represents a model, contains the associated validations.
+# Represents a model, contains the associated attributes and validations.
 class Valex::Model
 
   attr_accessor :attributes, :validations, :name

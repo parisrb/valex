@@ -1,10 +1,11 @@
-# Validation the length of a field.
 module Valex::Validations
+
+# Validation the length of a field.
   class Length < Validation
 
     attr_reader :allow_blank, :minimum, :maximum
-  
-    def initialize options={}
+
+    def initialize(options={})
       super
       # Specify the minimum length of the attribute.
       @minimum = options[:minimum] if options[:minimum]
@@ -15,4 +16,5 @@ module Valex::Validations
     end
 
   end
+
 end

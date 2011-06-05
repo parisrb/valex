@@ -2,9 +2,10 @@ require 'json'
 
 module Valex::Exporters
 
+  # Export validations in plain json
   class JSON
 
-    def process models
+    def process(models)
       models.collect do |model|
         validations = model.validations.collect do |validation|
           {:type => validation.class.name.split('::').pop.downcase}.update(validation.options)

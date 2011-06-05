@@ -6,6 +6,7 @@ rescue LoadError
 end
 
 module Valex
+
   class RakeTasks
 
     def self.install_tasks(opts = {})
@@ -37,4 +38,5 @@ module Valex
       end
     end
   end
+
 end

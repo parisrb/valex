@@ -4,7 +4,7 @@ module Valex::Exporters
 # Generate an hash object containing the validation rules for each model.
 # See http://docs.jquery.com/Plugins/validation
   class JQuery
-    def process models
+    def process(models)
       result = {}
       models.each do |model|
         model_result = {}

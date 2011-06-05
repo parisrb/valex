@@ -1,11 +1,12 @@
-# Validate the numericality of a field.
 module Valex::Validations
+
+  # Validate the numericality of a field.
   class Numericality < Validation
 
     attr_reader :equal_to, :even, :greater_than, :greater_than_or_equal_to,
-      :less_than, :less_than_or_equal_to, :odd, :only_integer, :message
+                :less_than, :less_than_or_equal_to, :odd, :only_integer, :message
 
-    def initialize options={}
+    def initialize(options={})
       super
       # Specify a value the field must be exactly.
       @equal_to = options[:equal_to] if options[:equal_to]
