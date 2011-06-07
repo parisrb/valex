@@ -1,6 +1,6 @@
 require 'active_model'
 
-module ActiveModel #:nodoc:
+module ActiveModel
 
   # Monkeypatch to register the models
   module Validations

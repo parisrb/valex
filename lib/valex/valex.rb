@@ -1,4 +1,4 @@
-module Valex #:nodoc:
+module Valex
 
   # The main entry point
   class Valex

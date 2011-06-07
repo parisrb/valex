@@ -1,4 +1,4 @@
-module Valex::Adapters # :nodoc:
+module Valex::Adapters
 
   # Transform a set of models from an ORM to Valex models.
   # Derived for each ORM who should implement a

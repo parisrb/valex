@@ -2,7 +2,7 @@ require 'sequel'
 
 Sequel::Model.plugin :validation_helpers
 
-module Sequel #:nodoc:
+module Sequel
 
   # Monkeypatch to register the models
   class Model
@@ -18,7 +18,7 @@ module Sequel #:nodoc:
 
   end
 
-  module Plugins::ValidationHelpers #:nodoc:
+  module Plugins::ValidationHelpers
 
     # Monkeypatch to register the validations
     module InstanceMethods
