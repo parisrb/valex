@@ -5,7 +5,7 @@ module Valex::Test::ActiveModel
 
   class TestActiveModel < Test::Unit::TestCase
     def test_validation_process
-      valex = Valex::Valex.new :active_model
+      valex = Valex::Valex.new 'active_model'
       assert_not_nil models = valex.process(HelperTest.model_path('active_model'))
       assert_equal 1, models.length
 

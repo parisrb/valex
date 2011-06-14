@@ -3,26 +3,29 @@ module Valex
   # The main entry point
   class Valex
 
+    KNOWN_ADAPTERS = {
+        'active_model' => {:file => 'adapters/active_model', :class => 'ActiveModelAdapter'},
+        'sequel' => {:file => 'adapters/sequel', :class => 'SequelAdapter'},
+        'mongoid' => {:file => 'adapters/mongoid', :class => 'MongoidAdapter'}}
+
+    KNOWN_EXPORTERS = {
+        'json' => {:file => 'exporters/json', :class => 'JSONExporter'},
+        'jquery' => {:file => 'adapters/jquery', :class => 'JQueryExporter'}}
+
     # Initialize
     # adapter:: the adapter name or class
     # parameters:: paramaters for the adapter and exporter
     # exporter:: the exporter name or class, default is :json
-    def initialize(adapter, parameters = {}, exporter=:json)
-      if adapter == :active_model
-        require_relative 'adapters/active_model'
-        @adapter = Adapters::ActiveModelAdapter.new parameters
-      elsif adapter == :sequel
-        require_relative 'adapters/sequel'
-        @adapter = Adapters::SequelAdapter.new parameters
+    def initialize(adapter, parameters = {}, exporter = 'json')
+      if known_adapter = KNOWN_ADAPTERS[adapter]
+        require_relative known_adapter[:file]
+        @adapter = Adapters.const_get(known_adapter[:class]).new parameters
       else
         @adapter = adapter
       end
-      if exporter == :json
-        require_relative 'exporters/json'
-        @exporter = Exporters::JSON.new parameters
-      elsif exporter == :jquery
-        require_relative 'exporters/jquery'
-        @exporter = Exporters::JQuery.new parameters
+      if known_exporter = KNOWN_EXPORTERS[exporter]
+        require_relative known_exporter[:file]
+        @exporter = Exporters.const_get(known_exporter[:class]).new parameters
       else
         @exporter = exporter
       end

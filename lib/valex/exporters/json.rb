@@ -3,7 +3,7 @@ require 'json'
 module Valex::Exporters
 
   # Export validations in plain JSON
-  class JSON
+  class JSONExporter
 
     def process(models)
       models.collect do |model|

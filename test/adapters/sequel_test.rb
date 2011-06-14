@@ -12,7 +12,7 @@ module Valex::Test::Sequel
     end
 
     def test_validation_process
-      valex = Valex::Valex.new :sequel, {'db' => ::SequelTestDB}
+      valex = Valex::Valex.new 'sequel', {'db' => ::SequelTestDB}
       assert_not_nil models = valex.process(HelperTest.model_path('sequel'))
       assert_equal 2, models.length
 
