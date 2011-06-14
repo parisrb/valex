@@ -6,6 +6,11 @@ module Valex::Exporters
   class JSONExporter
 
     def process(models)
+      process_to_ruby(models).to_json
+    end
+
+    # Do the export into ruby object
+    def process_to_ruby(models)
       models.collect do |model|
         attributes = {}
         model.attributes.each_value do |attribute|

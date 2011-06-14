@@ -1,10 +1,19 @@
+require 'json'
+
 module Valex::Exporters
 
 # Export for the jQuery validation plugin.
 # Generate an hash object containing the validation rules for each model.
 # See http://docs.jquery.com/Plugins/validation
   class JQueryExporter
+
+    # Export the models in json
     def process(models)
+      process_to_ruby(models).to_json
+    end
+
+    # Do the export into ruby object
+    def process_to_ruby(models)
       result = {}
       models.each do |model|
         model_result = {}

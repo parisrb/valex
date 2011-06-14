@@ -12,7 +12,7 @@ class Valex::Test::JQueryTest < Test::Unit::TestCase
     model.attributes[attribute.name] = attribute
     models << model
 
-    assert_equal({"user"=>{:minlength=>5, :required => true}}, Valex::Exporters::JQuery.new.process(models))
+    assert_equal({"user"=>{:minlength=>5, :required => true}}, Valex::Exporters::JQueryExporter.new.process_to_ruby(models))
   end
 
 end

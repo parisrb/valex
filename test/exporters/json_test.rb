@@ -20,7 +20,7 @@ class Valex::Test::JQueryTest < Test::Unit::TestCase
                              [{:type=>"length", :minimum=>5},
                               {:type=>"presence"}],
                         }]}}],
-        Valex::Exporters::JSON.new.process(models))
+        Valex::Exporters::JSONExporter.new.process_to_ruby(models))
   end
 
 end
