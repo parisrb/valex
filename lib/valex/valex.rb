@@ -14,21 +14,26 @@ module Valex
         'jquery' => {:file => 'adapters/jquery', :class => 'JQueryExporter'}}
 
     # Initialize
-    # adapter:: the adapter name or class
+    # adapter:: the adapter name or an adapter instance
     # parameters:: paramaters for the adapter and exporter
-    # exporter:: the exporter name or class, default is :json
+    # exporter:: the exporter name or an exporter instance, default is :json
     def initialize(adapter, parameters = {}, exporter = 'json')
       if known_adapter = KNOWN_ADAPTERS[adapter]
         require_relative known_adapter[:file]
         @adapter = Adapters.const_get(known_adapter[:class]).new parameters
-      else
+      elsif adapter.respond_to? :process
         @adapter = adapter
+      else
+        raise "Unknown adapter, possible names are '#{KNOWN_ADAPTERS.keys.join("', '")}'"
       end
       if known_exporter = KNOWN_EXPORTERS[exporter]
         require_relative known_exporter[:file]
         @exporter = Exporters.const_get(known_exporter[:class]).new parameters
-      else
+      elsif exporter.respond_to? :process
+        #we directly use an exporter
         @exporter = exporter
+      else
+        raise "Unknown exporter, possible names are '#{KNOWN_EXPORTERS.keys.join("', '")}'"
       end
     end
 
