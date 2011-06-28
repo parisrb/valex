@@ -4,6 +4,7 @@ module Valex
   class Valex
 
     KNOWN_ADAPTERS = {
+        'rails' => {:file => 'adapters/active_model', :class => 'ActiveModelAdapter'},
         'active_model' => {:file => 'adapters/active_model', :class => 'ActiveModelAdapter'},
         'sequel' => {:file => 'adapters/sequel', :class => 'SequelAdapter'},
         'mongoid' => {:file => 'adapters/mongoid', :class => 'MongoidAdapter'}}
