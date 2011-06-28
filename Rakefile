@@ -1,6 +1,7 @@
 require 'bundler'
 require 'rake'
 require 'rake/testtask'
+require 'yard'
 
 Bundler::GemHelper.install_tasks
 
@@ -12,3 +13,5 @@ Rake::TestTask.new('test') { |t|
   t.verbose = true
   t.warning = true
 }
+
+YARD::Rake::YardocTask.new
