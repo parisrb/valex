@@ -10,9 +10,11 @@ SequelTestDB.create_table :luzers do
   String :name, :null => true, :index => true, :unique => true
 end
 
-module Valex::Test::Sequel
+module Valex
+module Test
+module Sequel
 
-  class User < Sequel::Model
+  class User < ::Sequel::Model
 
     def validate
       validates_presence :name
@@ -20,7 +22,7 @@ module Valex::Test::Sequel
 
   end
 
-  class Luser < Sequel::Model(:luzers)
+  class Luser < ::Sequel::Model(:luzers)
 
     def validate
       validates_presence :name
@@ -29,4 +31,6 @@ module Valex::Test::Sequel
 
   end
 
+end
+end
 end

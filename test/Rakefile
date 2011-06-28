@@ -6,9 +6,10 @@ require 'sequel'
 
 SequelTestDB = Sequel.sqlite
 
-model_path = File.expand_path(File.join(File.dirname(__FILE__), 'models', 'sequel.rb'))
+model_path = File.expand_path(File.join(File.dirname(__FILE__), 'adapters', 'models', 'sequel.rb'))
 
-Valex::RakeTasks.install_tasks :adapter => :sequel,
+Valex::RakeTasks.install_tasks :adapter => 'sequel',
+  :exporter => 'jquery',
   :input => model_path,
   :params => {'db' => SequelTestDB}
 

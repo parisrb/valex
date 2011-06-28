@@ -11,7 +11,7 @@ module Valex
 
     KNOWN_EXPORTERS = {
         'json' => {:file => 'exporters/json', :class => 'JSONExporter'},
-        'jquery' => {:file => 'adapters/jquery', :class => 'JQueryExporter'}}
+        'jquery' => {:file => 'exporters/jquery', :class => 'JQueryExporter'}}
 
     # Initialize
     # adapter:: the adapter name or an adapter instance

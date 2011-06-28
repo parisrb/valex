@@ -16,7 +16,7 @@ module Valex
     def initialize(opts)
       @models_files_pattern = opts[:input]
       @adapter = opts[:adapter]
-      @exporter = opts[:exporter] || :json
+      @exporter = opts[:exporter] || 'json'
       @params = opts[:params]
       @output = opts[:output] || 'valex.json'
     end
